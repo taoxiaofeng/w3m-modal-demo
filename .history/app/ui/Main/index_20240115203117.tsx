@@ -41,7 +41,7 @@ export default function Main() {
     },
   });
 
-  // usePrepareContractWrite
+  // 使用 usePrepareContractWrite
   const { config } = usePrepareContractWrite({
     address: contract.get(network + "")?.address as `0x${string}`,
     abi: contract.get(network + "")?.abi,
@@ -80,6 +80,7 @@ export default function Main() {
     },
   });
 
+  // TODO  3、监听交易成功获取交易成功金额，请求接口更新数据
   // Add the useSendTransaction hook, This hook performs the actual transaction.
   const {
     isLoading,

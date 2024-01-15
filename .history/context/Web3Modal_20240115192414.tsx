@@ -5,7 +5,7 @@ import { walletConnectProvider, EIP6963Connector } from '@web3modal/wagmi';
 
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
-import { arbitrum, bsc, zkSync } from 'viem/chains';
+import { mainnet, arbitrum, bsc } from 'viem/chains';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
@@ -15,7 +15,7 @@ const projectId = '6137be5aeeaafeacd44840629ad93d19';
 
 // 2. Create wagmiConfig
 const { chains, publicClient } = configureChains(
-  [zkSync, arbitrum, bsc],
+  [mainnet, arbitrum, bsc],
   [walletConnectProvider({ projectId }), publicProvider()]
 );
 

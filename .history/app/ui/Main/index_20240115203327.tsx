@@ -41,7 +41,7 @@ export default function Main() {
     },
   });
 
-  // usePrepareContractWrite
+  // 使用 usePrepareContractWrite
   const { config } = usePrepareContractWrite({
     address: contract.get(network + "")?.address as `0x${string}`,
     abi: contract.get(network + "")?.abi,

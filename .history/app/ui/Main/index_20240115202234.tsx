@@ -35,22 +35,22 @@ export default function Main() {
   const { data: balance } = useBalance({
     address,
     chainId: network,
-    token: contract.get(network + "")?.address as `0x${string}`,
+    token: contract.get(network + "")?.address as `0x${string}`, // 合约地址
     onError: (error) => {
       console.log(`useBalance -- error -- `, error);
     },
   });
 
-  // usePrepareContractWrite
+  // 使用 usePrepareContractWrite
   const { config } = usePrepareContractWrite({
-    address: contract.get(network + "")?.address as `0x${string}`,
+    address: contract.get(network + "")?.address as `0x${string}`, // 合约地址
     abi: contract.get(network + "")?.abi,
     functionName: "transfer",
     chainId: network,
     args: [
-      "0x0000000",
-      parseUnits(debouncedAmount?.toString(), 6),
-    ], 
+      "0x6b7501066a10c995202daceb41061404db4d11ae",
+      parseUnits(debouncedAmount as string, 6),
+    ], // USDT 通常有 6 个小数位
     onError: (error) => {
       let msg = "transfer error";
       if (
@@ -80,6 +80,7 @@ export default function Main() {
     },
   });
 
+  // TODO  3、监听交易成功获取交易成功金额，请求接口更新数据
   // Add the useSendTransaction hook, This hook performs the actual transaction.
   const {
     isLoading,
@@ -111,7 +112,7 @@ export default function Main() {
       </Select>
       <Input
         label="amount"
-        className="max-w-xs mt-4"
+        className="max-w-xs"
         onChange={(e) => setAmount(parseInt(e.target.value, 10))}
       />
     </div>

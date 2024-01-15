@@ -41,14 +41,14 @@ export default function Main() {
     },
   });
 
-  // usePrepareContractWrite
+  // 使用 usePrepareContractWrite
   const { config } = usePrepareContractWrite({
     address: contract.get(network + "")?.address as `0x${string}`,
     abi: contract.get(network + "")?.abi,
     functionName: "transfer",
     chainId: network,
     args: [
-      "0x0000000",
+      "0x6b7501066a10c995202daceb41061404db4d11ae",
       parseUnits(debouncedAmount?.toString(), 6),
     ], 
     onError: (error) => {
@@ -80,6 +80,7 @@ export default function Main() {
     },
   });
 
+  // TODO  3、监听交易成功获取交易成功金额，请求接口更新数据
   // Add the useSendTransaction hook, This hook performs the actual transaction.
   const {
     isLoading,
